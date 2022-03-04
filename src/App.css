@@ -1,16 +1,3 @@
-.App {
- text-align: center;
- width:100vw;
- height:100vh;
-}
-
-.flex {
-  display:flex;
-  width:90%;
-}
-
-.box {
-  border: solid 1px black;
-  height:15px;
-  width:15px;
+html.dark {
+  background-color: rgb(15, 23, 42);
 }
