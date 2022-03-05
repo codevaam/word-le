@@ -12,16 +12,13 @@ const device = parser.getDevice()
 export const shareStatus = (
   guesses: string[],
   lost: boolean,
-  isHardMode: boolean,
-  isDarkMode: boolean,
-  isHighContrastMode: boolean,
   handleShareToClipboard: () => void
 ) => {
   const textToShare =
     `${GAME_TITLE} ${solutionIndex} ${
       lost ? 'X' : guesses.length
-    }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}\n\n` +
-    generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode))
+    }/${MAX_CHALLENGES}${''}\n\n` +
+    generateEmojiGrid(guesses,['⬛'])
 
   const shareData = { text: textToShare }
 
@@ -72,12 +69,4 @@ const attemptShare = (shareData: object) => {
     navigator.canShare(shareData) &&
     navigator.share
   )
-}
-
-const getEmojiTiles = (isDarkMode: boolean, isHighContrastMode: boolean) => {
-  let tiles: string[] = []
-  tiles.push(isHighContrastMode ? '🟧' : '🟩')
-  tiles.push(isHighContrastMode ? '🟦' : '🟨')
-  tiles.push(isDarkMode ? '⬛' : '⬜')
-  return tiles
 }

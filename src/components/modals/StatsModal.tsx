@@ -20,9 +20,6 @@ type Props = {
   isGameLost: boolean
   isGameWon: boolean
   handleShareToClipboard: () => void
-  isHardMode: boolean
-  isDarkMode: boolean
-  isHighContrastMode: boolean
 }
 
 export const StatsModal = ({
@@ -33,9 +30,6 @@ export const StatsModal = ({
   isGameLost,
   isGameWon,
   handleShareToClipboard,
-  isHardMode,
-  isDarkMode,
-  isHighContrastMode,
 }: Props) => {
   if (gameStats.totalGames <= 0) {
     return (
@@ -76,9 +70,6 @@ export const StatsModal = ({
               shareStatus(
                 guesses,
                 isGameLost,
-                isHardMode,
-                isDarkMode,
-                isHighContrastMode,
                 handleShareToClipboard
               )
             }}
