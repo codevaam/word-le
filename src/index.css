@@ -13,18 +13,6 @@
   --present-cell-bg-color: theme('colors.blueberryLight');
 }
 
-.dark {
-  --default-cell-bg-color: theme('colors.slate');
-  --default-cell-border-color: theme('colors.white');
-  --default-cell-text-color: theme('colors.white');
-  --absent-cell-bg-color: theme('colors.slate');
-}
-
-.high-contrast {
-  /* --correct-cell-bg-color: theme('colors.orange.400');
-  --present-cell-bg-color: theme('colors.cyan.400'); */
-}
-
 .cell-fill-animation {
   animation: onTypeCell linear;
   animation-duration: 0.35s;

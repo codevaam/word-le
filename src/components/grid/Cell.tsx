@@ -25,11 +25,11 @@ export const Cell = ({
   const isHighContrast = getStoredIsHighContrastMode()
 
   const classes = classnames(
-    'w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-4xl font-bold rounded dark:text-white',
+    'w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-4xl font-bold rounded',
     {
-      'bg-white border-slate':
+      'bg-white text-black border-slate':
         !status,
-      'border-black dark:border-slate': value && !status,
+      'border-black': value && !status,
       'absent shadowed bg-blueberryLight2 dark:bg-slate-700 text-white border-slate-400 dark:border-slate-700':
         status === 'absent',
       'correct shadowed bg-blueberryLight2 text-white border-blueberryLight2':

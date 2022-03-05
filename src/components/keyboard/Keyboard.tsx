@@ -20,7 +20,7 @@ export const Keyboard = ({
   isRevealing,
 }: Props) => {
   const charStatuses = getStatuses(guesses)
-
+  console.log(charStatuses)
   const onClick = (value: string) => {
     if (value === 'ENTER') {
       onEnter()

@@ -21,7 +21,6 @@ import {
   isWordInWordList,
   isWinningWord,
   solution,
-  findFirstUnusedReveal,
   unicodeLength,
 } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
@@ -184,6 +183,7 @@ function App() {
             currentGuess={currentGuess}
             isRevealing={isRevealing}
             currentRowClassName={currentRowClass}
+            isGameWon={isGameWon}
           />
         </div>
         <Keyboard

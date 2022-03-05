@@ -54,7 +54,7 @@ export const StatsModal = ({
       </h4>
       <Histogram gameStats={gameStats} />
       {(isGameLost || isGameWon) && (
-        <div className="mt-5 sm:mt-6 columns-2 dark:text-white">
+        <div className="mt-5 sm:mt-6 columns-2">
           <div>
             <h5>{NEW_WORD_TEXT}</h5>
             <Countdown
@@ -65,7 +65,7 @@ export const StatsModal = ({
           </div>
           <button
             type="button"
-            className="mt-2 w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+            className="mt-2 w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
             onClick={() => {
               shareStatus(
                 guesses,

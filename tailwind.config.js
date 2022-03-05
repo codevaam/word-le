@@ -1,6 +1,5 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: 'class',
   theme: {
     colors: {
       blueberry: '#5C2D90',
@@ -13,15 +12,20 @@ module.exports = {
       orange: '#f97316',
       cyan: '#06b6d4'
     },
-    extends: {
+    extend: {
       keyframes: {
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(-3deg)' },
-          '50%': { transform: 'rotate(3deg)' },
+        'up': {
+          '0%': { transform: 'translate' },
+          '100%': { transform: 'rotate(3deg)' },
+        },
+        'vanish': {
+          '0%': { opacity: 1 },
+          '100%': { opacity: 0 },
         }
       },
       animation: {
-        wiggle: 'wiggle 1s ease-in-out infinite',
+        'up': 'up 1s ease-in-out infinite',
+        'vanish': 'vanish 1s ease-in forwards'
       }
     }
   },
