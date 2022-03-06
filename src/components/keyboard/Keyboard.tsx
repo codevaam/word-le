@@ -31,16 +31,26 @@ export const Keyboard = ({
     }
   }
 
+  const handleHighlight = (id: string): void => {
+    document.getElementById(id)!.style.background = "lightblue";
+    setTimeout(() => {
+      document.getElementById(id)!.style.background = "";
+    }, 100);
+  }
+
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
       if (e.code === 'Enter') {
+        handleHighlight("ENTER");
         onEnter()
       } else if (e.code === 'Backspace') {
+        handleHighlight("DELETE");
         onDelete()
       } else {
         const key = localeAwareUpperCase(e.key)
         // TODO: check this test if the range works with non-english letters
         if (key.length === 1 && key >= 'A' && key <= 'Z') {
+          handleHighlight(key);
           onChar(key)
         }
       }
