@@ -13,7 +13,8 @@ module.exports = {
       green: 'rgba(65, 30, 118, 0.72)',
       orange: '#f97316',
       cyan: '#06b6d4',
-      lightGrey: '#F2F3F9'
+      lightGrey: '#F2F3F9',
+      timerBtn: '#FDCA7B'
     },
     extends: {
       keyframes: {
