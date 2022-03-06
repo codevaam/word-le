@@ -39,13 +39,12 @@ export const Key = ({
     height: '45px',
   }
 
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+  const handleClick: React.MouseEventHandler<HTMLButtonElement>= (event) => {
     onClick(value)
     event.currentTarget.blur()
   }
-
   return (
-    <button style={styles} className={classes} onClick={handleClick}>
+    <button id={value} style={styles} className={classes} onClick={handleClick} >
       {children || value}
     </button>
   )

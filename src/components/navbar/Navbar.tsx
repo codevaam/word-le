@@ -43,24 +43,33 @@ export const Navbar = ({
   return (
     <div className="navbar mb-10">
       <div className="navbar-content px-5">
-        <InformationCircleIcon
-          className="h-6 w-6 mr-2 cursor-pointer dark:stroke-white"
-          onClick={() => setIsInfoModalOpen(true)}
-        />
-        <p className="text-xl ml-2.5 font-bold dark:text-white">{GAME_TITLE}</p>
-        <div className="right-icons">
-          <ChartBarIcon
-            className="h-6 w-6 mr-3 cursor-pointer dark:stroke-white"
-            onClick={() => setIsStatsModalOpen(true)}
+        <div className="navbar-comp">
+          <div className="right-icons">
+            <ChartBarIcon
+              className="h-6 w-6 mr-3 cursor-pointer text-white dark:stroke-white"
+              onClick={() => setIsStatsModalOpen(true)}
+            />
+          </div>
+          <p className="text-xl ml-2.5 font-bold dark:text-white">
+            {GAME_TITLE}
+          </p>
+          <InformationCircleIcon
+            className="h-6 w-6 mr-2 cursor-pointer text-white dark:stroke-white"
+            onClick={() => setIsInfoModalOpen(true)}
           />
         </div>
+        <div className="title">
+          <span>WORD-LE</span>
+          <div className="tagline">
+            Burn your brain cells while guessing the right word.{" "}
+          </div>
+        </div>
       </div>
-      <hr></hr>
       {showTimer && (
         <div className='flex justify-end pr-5 mt-5'>
           <Timer minutes={minutes} seconds={seconds} />
         </div>
       )}
     </div>
-  )
+  );
 }

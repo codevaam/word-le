@@ -5,19 +5,19 @@
 :root {
   --animation-speed: 1000ms;
   --animation-speed-fast: 250ms;
-  --default-cell-bg-color: theme('colors.white');
-  --default-cell-border-color: theme('colors.black');
-  --default-cell-text-color: theme('colors.black');
-  --absent-cell-bg-color: theme('colors.blueberryLight2');
-  --correct-cell-bg-color: theme('colors.green');
-  --present-cell-bg-color: theme('colors.blueberryLight');
+  --default-cell-bg-color: theme("colors.white");
+  --default-cell-border-color: theme("colors.black");
+  --default-cell-text-color: theme("colors.black");
+  --absent-cell-bg-color: theme("colors.blueberryLight2");
+  --correct-cell-bg-color: theme("colors.green");
+  --present-cell-bg-color: theme("colors.blueberryLight");
 }
 
 .dark {
-  --default-cell-bg-color: theme('colors.slate');
-  --default-cell-border-color: theme('colors.white');
-  --default-cell-text-color: theme('colors.white');
-  --absent-cell-bg-color: theme('colors.slate');
+  --default-cell-bg-color: theme("colors.slate");
+  --default-cell-border-color: theme("colors.white");
+  --default-cell-text-color: theme("colors.white");
+  --absent-cell-bg-color: theme("colors.slate");
 }
 
 .high-contrast {
@@ -68,13 +68,62 @@ svg.cursor-pointer:hover {
 
 .navbar {
   margin-bottom: 2%;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 0px 12rem 0px;
 }
 
 .navbar-content {
+  position: relative;
   display: flex;
-  height: 3rem;
+  z-index: 100;
+  flex-direction: column;
+  border-radius: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-comp {
+  position: relative;
+  display: flex;
+  z-index: 100;
+  border-radius: 2rem;
+  width: 100%;
+  margin-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
+}
+
+.navbar::before {
+  border-radius: 100%;
+  position: absolute;
+  background: #5c2d90;
+  right: -100px;
+  left: -100px;
+  top: -80px;
+  content: "";
+  bottom: 0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  color: #fff;
+  z-index: 1000;
+}
+
+.title span {
+  font-size: 46px;
+  font-weight: 600;
+}
+
+.tagline {
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
 }
 
 .right-icons {
