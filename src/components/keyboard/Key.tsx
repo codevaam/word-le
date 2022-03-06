@@ -2,7 +2,6 @@ import { ReactNode } from 'react'
 import classnames from 'classnames'
 import { CharStatus } from '../../lib/statuses'
 import { MAX_WORD_LENGTH, REVEAL_TIME_MS } from '../../constants/settings'
-import { getStoredIsHighContrastMode } from '../../lib/localStorage'
 
 type Props = {
   children?: ReactNode
@@ -22,14 +21,13 @@ export const Key = ({
   isRevealing,
 }: Props) => {
   const keyDelayMs = REVEAL_TIME_MS * MAX_WORD_LENGTH
-  const isHighContrast = getStoredIsHighContrastMode()
 
   const classes = classnames(
-    'flex items-center justify-center rounded mx-0.5 text-xs font-bold cursor-pointer select-none dark:text-white',
+    'flex items-center justify-center rounded-lg mx-0.5 text-xs font-bold cursor-pointer select-none dark:text-white',
     {
       'transition ease-in-out': isRevealing,
-      'border-2 border-slate dark:bg-slate-600 active:bg-slate': !status,
-      'bg-blueberryLight2 dark:bg-slate-800 text-white': status === 'absent',
+      'border-slate bg-lightGrey active:bg-slate': !status,
+      'bg-blueberryLight2 text-white': status === 'absent',
       'bg-blueberryLight active:bg-cyan-700 text-white': status === 'present',
       'bg-green active:bg-green-700 text-white': status === 'correct',
     }
@@ -38,7 +36,7 @@ export const Key = ({
   const styles = {
     transitionDelay: isRevealing ? `${keyDelayMs}ms` : 'unset',
     width: `${width}px`,
-    height: '58px',
+    height: '45px',
   }
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
