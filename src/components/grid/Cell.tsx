@@ -9,7 +9,8 @@ type Props = {
   status?: CharStatus
   isRevealing?: boolean
   isCompleted?: boolean
-  position?: number
+  position?: number,
+  index?: number
 }
 
 export const Cell = ({
@@ -18,19 +19,21 @@ export const Cell = ({
   isRevealing,
   isCompleted,
   position = 0,
+  index,
 }: Props) => {
   const isFilled = value && !isCompleted
   const shouldReveal = isRevealing && isCompleted
   const animationDelay = `${position * REVEAL_TIME_MS}ms`
   const isHighContrast = getStoredIsHighContrastMode()
+  console.log(index)
 
   const classes = classnames(
-    'w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-4xl font-bold rounded dark:text-white',
+    'w-12 h-12 border-solid flex items-center justify-center mx-1 mb-2 text-4xl font-bold rounded-lg',
     {
-      'bg-white border-slate':
+      'bg-lightGrey border-slate':
         !status,
       'border-black dark:border-slate': value && !status,
-      'absent shadowed bg-blueberryLight2 dark:bg-slate-700 text-white border-slate-400 dark:border-slate-700':
+      'absent shadowed bg-blueberryLight2 dark:bg-slate-700 text-white':
         status === 'absent',
       'correct shadowed bg-blueberryLight2 text-white border-blueberryLight2':
         status === 'correct' && isHighContrast,
@@ -42,12 +45,12 @@ export const Cell = ({
         status === 'present' && !isHighContrast,
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,
+      'animate-pulse border-slateDark': index===0
     }
   )
 
   const letterClasses = classnames(
-    'letter-container',
-    {'animation-wiggle 1s infinite' : status === 'correct'}
+    'letter-container text-lg',
   )
 
   return (
