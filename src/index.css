@@ -67,16 +67,16 @@ svg.cursor-pointer:hover {
 }
 
 .navbar {
-  margin-bottom: 2%;
+  margin-bottom: 4%;
   position: relative;
   overflow: hidden;
-  padding: 1rem 0px 12rem 0px;
+  padding: 1rem 0 12rem 0;
 }
 
 .navbar-content {
   position: relative;
   display: flex;
-  z-index: 100;
+  z-index: 10;
   flex-direction: column;
   border-radius: 2rem;
   align-items: center;
@@ -86,9 +86,10 @@ svg.cursor-pointer:hover {
 .navbar-comp {
   position: relative;
   display: flex;
-  z-index: 100;
+  z-index: 10;
   border-radius: 2rem;
   width: 100%;
+  padding: 0 5px;
   margin-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
@@ -98,11 +99,11 @@ svg.cursor-pointer:hover {
   border-radius: 100%;
   position: absolute;
   background: #5c2d90;
-  right: -100px;
-  left: -100px;
-  top: -80px;
+  right: -200px;
+  left: -200px;
+  top: -700px;
   content: "";
-  bottom: 0;
+  bottom: calc(100% - 13em);
 }
 
 .title {
@@ -124,6 +125,11 @@ svg.cursor-pointer:hover {
   font-size: 12px;
   font-weight: 400;
   text-align: center;
+}
+
+.timer{
+  margin-top: 1.5rem;
+  z-index: 100;
 }
 
 .right-icons {

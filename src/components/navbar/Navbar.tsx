@@ -41,7 +41,7 @@ export const Navbar = ({
 
   
   return (
-    <div className="navbar mb-10">
+    <div className="navbar">
       <div className="navbar-content px-5">
         <div className="navbar-comp">
           <div className="right-icons">
@@ -64,12 +64,12 @@ export const Navbar = ({
             Burn your brain cells while guessing the right word.{" "}
           </div>
         </div>
+        {showTimer && (
+          <div className="flex justify-end pr-5 ml-5 timer">
+            <Timer minutes={minutes} seconds={seconds} />
+          </div>
+        )}
       </div>
-      {showTimer && (
-        <div className='flex justify-end pr-5 mt-5'>
-          <Timer minutes={minutes} seconds={seconds} />
-        </div>
-      )}
     </div>
   );
 }
