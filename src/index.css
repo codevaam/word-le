@@ -89,7 +89,7 @@ svg.cursor-pointer:hover {
   z-index: 100;
   border-radius: 2rem;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
 }
@@ -98,8 +98,8 @@ svg.cursor-pointer:hover {
   border-radius: 100%;
   position: absolute;
   background: #5c2d90;
-  right: -80px;
-  left: -80px;
+  right: -100px;
+  left: -100px;
   top: -80px;
   content: "";
   bottom: 0;
@@ -116,11 +116,13 @@ svg.cursor-pointer:hover {
 }
 
 .title span {
-  font-size: 1.5rem;
+  font-size: 46px;
+  font-weight: 600;
 }
 
 .tagline {
-  font-size: 0.6rem;
+  font-size: 12px;
+  font-weight: 400;
   text-align: center;
 }
 

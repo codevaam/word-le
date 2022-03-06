@@ -34,7 +34,7 @@ export const Navbar = ({
         <div className="title">
           <span>WORD-LE</span>
           <div className="tagline">
-            Take some words and put it in your ass. Tease your brain.
+            Burn your brain cells while guessing the right word.{" "}
           </div>
         </div>
       </div>
