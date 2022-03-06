@@ -4,15 +4,18 @@ import {
 } from '@heroicons/react/outline'
 import { useEffect, useState } from 'react'
 import { GAME_TITLE } from '../../constants/strings'
+import Timer from '../timer'
 
 type Props = {
   setIsInfoModalOpen: (value: boolean) => void
   setIsStatsModalOpen: (value: boolean) => void
+  showTimer: boolean
 }
 
 export const Navbar = ({
   setIsInfoModalOpen,
   setIsStatsModalOpen,
+  showTimer
 }: Props) => {
   const {initialMinute = 0,initialSeconds = 0} = {initialMinute: 5, initialSeconds: 0};
     const [ minutes, setMinutes ] = useState(initialMinute);
@@ -38,7 +41,7 @@ export const Navbar = ({
 
   
   return (
-    <div className="navbar">
+    <div className="navbar mb-10">
       <div className="navbar-content px-5">
         <InformationCircleIcon
           className="h-6 w-6 mr-2 cursor-pointer dark:stroke-white"
@@ -46,12 +49,6 @@ export const Navbar = ({
         />
         <p className="text-xl ml-2.5 font-bold dark:text-white">{GAME_TITLE}</p>
         <div className="right-icons">
-          <div className='mr-5'>
-          { minutes === 0 && seconds === 0
-            ? null
-            : <h1> {minutes}:{seconds < 10 ?  `0${seconds}` : seconds}</h1> 
-        }
-          </div>
           <ChartBarIcon
             className="h-6 w-6 mr-3 cursor-pointer dark:stroke-white"
             onClick={() => setIsStatsModalOpen(true)}
@@ -59,6 +56,11 @@ export const Navbar = ({
         </div>
       </div>
       <hr></hr>
+      {showTimer && (
+        <div className='flex justify-end pr-5 mt-5'>
+          <Timer minutes={minutes} seconds={seconds} />
+        </div>
+      )}
     </div>
   )
 }
