@@ -36,8 +36,23 @@ import { useAlert } from './context/AlertContext'
 import { Navbar } from './components/navbar/Navbar'
 import LoginPage from './components/login'
 import Score from './components/score'
+import { getWord } from './api_call/word'
+import { endGame } from './api_call/endGame'
+interface ISol{
+  
+    "isSuccess": boolean,
+    "data": {
+        "_id": string,
+        "word": string,
+        "info": string[],
+        "isUsed": boolean,
+        "__v": number
+    }
+
+}
 
 function App() {
+  // let solution: ISol ;
   const { showError: showErrorAlert, showSuccess: showSuccessAlert } =
     useAlert()
   const [currentGuess, setCurrentGuess] = useState('')
@@ -48,6 +63,7 @@ function App() {
   const [isGameLost, setIsGameLost] = useState(false)
   const [isRevealing, setIsRevealing] = useState(false)
   const [guest, setGuest] = useState(true);
+  // let solution = "";
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
     if (loaded?.solution !== solution) {
@@ -68,10 +84,14 @@ function App() {
 
   const [stats, setStats] = useState(() => loadStats())
 
+  
+
   useEffect(() => {
     // if no game state on load,
-    // show the user the how-to info modal
+    // // show the user the how-to info modal
+    // solution =  getWord().data.word;
     if (!loadGameStateFromLocalStorage()) {
+      
       setTimeout(() => {
         setIsInfoModalOpen(true)
       }, WELCOME_INFO_MODAL_MS)
@@ -86,7 +106,15 @@ function App() {
     saveGameStateToLocalStorage({ guesses, solution })
   }, [guesses])
 
+  useEffect(()=>{
+    if(isStatsModalOpen)
+    { 
+    console.log("I am in");
+    endGame()}
+  },[isStatsModalOpen ])
+
   useEffect(() => {
+   
     if (isGameWon) {
       const winMessage =
         WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
@@ -95,6 +123,7 @@ function App() {
       showSuccessAlert(winMessage, {
         delayMs,
         onClose: () => setIsStatsModalOpen(true),
+       
       })
     }
 

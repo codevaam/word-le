@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { login } from '../../api_call/login';
+import { register } from '../../api_call/register';
 
 type Props = {
     loginUser: () => void
@@ -8,6 +10,15 @@ const LoginPage = ({ loginUser }:Props) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const handleSubmit = ()=>{
+        if(name!=='' && email!=='' && password!=='')
+        {
+            login();
+            register();
+            loginUser();
+        }
+    }
     return (
         <>
         <div className='m-8'>
@@ -16,7 +27,7 @@ const LoginPage = ({ loginUser }:Props) => {
                 <input value={email} onChange={(e) => setEmail(e.target.value)} className="shadow appearance-none mb-3 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Email"/>
                 <input value={password} onChange = {(e) => setPassword(e.target.value)} className="shadow appearance-none mb-8 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" placeholder="Password"/>
 
-                <button onClick={loginUser} className='rounded-full bg-blueberry text-white px-8 py-2'>Submit</button>
+                <button onClick={()=>handleSubmit()} className='rounded-full bg-blueberry text-white px-8 py-2'>Submit</button>
             </div>
         </div>
         </>
