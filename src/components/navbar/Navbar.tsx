@@ -4,15 +4,18 @@ import {
 } from '@heroicons/react/outline'
 import { useEffect, useState } from 'react'
 import { GAME_TITLE } from '../../constants/strings'
+import Timer from '../timer'
 
 type Props = {
   setIsInfoModalOpen: (value: boolean) => void
   setIsStatsModalOpen: (value: boolean) => void
+  showTimer: boolean
 }
 
 export const Navbar = ({
   setIsInfoModalOpen,
   setIsStatsModalOpen,
+  showTimer
 }: Props) => {
   const {initialMinute = 0,initialSeconds = 0} = {initialMinute: 5, initialSeconds: 0};
     const [ minutes, setMinutes ] = useState(initialMinute);
@@ -38,7 +41,7 @@ export const Navbar = ({
 
   
   return (
-    <div className="navbar">
+    <div className="navbar mb-10">
       <div className="navbar-content px-5">
         <div className="navbar-comp">
           <div className="right-icons">
@@ -62,6 +65,11 @@ export const Navbar = ({
           </div>
         </div>
       </div>
+      {showTimer && (
+        <div className='flex justify-end pr-5 mt-5'>
+          <Timer minutes={minutes} seconds={seconds} />
+        </div>
+      )}
     </div>
   );
 }

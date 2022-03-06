@@ -34,6 +34,8 @@ import './App.css'
 import { AlertContainer } from './components/alerts/AlertContainer'
 import { useAlert } from './context/AlertContext'
 import { Navbar } from './components/navbar/Navbar'
+import LoginPage from './components/login'
+import Score from './components/score'
 
 function App() {
   const { showError: showErrorAlert, showSuccess: showSuccessAlert } =
@@ -45,6 +47,7 @@ function App() {
   const [currentRowClass, setCurrentRowClass] = useState('')
   const [isGameLost, setIsGameLost] = useState(false)
   const [isRevealing, setIsRevealing] = useState(false)
+  const [guest, setGuest] = useState(true);
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
     if (loaded?.solution !== solution) {
@@ -169,12 +172,25 @@ function App() {
       }
     }
   }
-
+  if(guest) {
+    return (
+      <>
+        <Navbar
+          setIsInfoModalOpen={setIsInfoModalOpen}
+          setIsStatsModalOpen={setIsStatsModalOpen}
+          showTimer={false}
+        />
+        <Score />
+        <LoginPage loginUser={() => setGuest(false)} />
+      </>
+    )
+  }
   return (
     <div className="h-screen flex flex-col">
       <Navbar
         setIsInfoModalOpen={setIsInfoModalOpen}
         setIsStatsModalOpen={setIsStatsModalOpen}
+        showTimer={true}
       />
       <div className="pt-2 px-1 pb-8 md:max-w-7xl w-full mx-auto sm:px-6 lg:px-8 flex flex-col grow">
         <div className="pb-6 grow">
