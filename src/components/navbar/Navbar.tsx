@@ -10,40 +10,24 @@ type Props = {
   setIsInfoModalOpen: (value: boolean) => void
   setIsStatsModalOpen: (value: boolean) => void
   showTimer: boolean
+  minutes : number
+  seconds: number
 }
 
 export const Navbar = ({
   setIsInfoModalOpen,
   setIsStatsModalOpen,
+  minutes,
+  seconds,
   showTimer
 }: Props) => {
-  const {initialMinute = 0,initialSeconds = 0} = {initialMinute: 5, initialSeconds: 0};
-    const [ minutes, setMinutes ] = useState(initialMinute);
-    const [seconds, setSeconds ] =  useState(initialSeconds);
-    useEffect(()=>{
-    let myInterval = setInterval(() => {
-            if (seconds > 0) {
-                setSeconds(seconds - 1);
-            }
-            if (seconds === 0) {
-                if (minutes === 0) {
-                    clearInterval(myInterval)
-                } else {
-                    setMinutes(minutes - 1);
-                    setSeconds(59);
-                }
-            } 
-        }, 1000)
-        return ()=> {
-            clearInterval(myInterval);
-          };
-    });
-
   
   return (
+    <>
     <div className="navbar">
+      <img className='banner_img absolute' src="./nav.svg" alt="banner" />
       <div className="navbar-content px-5">
-        <div className="navbar-comp">
+        <div className="navbar-comp mt-2">
           <div className="right-icons">
             <ChartBarIcon
               className="h-6 w-6 mr-3 cursor-pointer text-white dark:stroke-white"
@@ -64,12 +48,17 @@ export const Navbar = ({
             Burn your brain cells while guessing the right word.{" "}
           </div>
         </div>
-        {showTimer && (
-          <div className="flex justify-end pr-5 ml-5 timer">
-            <Timer minutes={minutes} seconds={seconds} />
-          </div>
-        )}
+        
       </div>
+
     </div>
+    <div>
+    {showTimer && (
+      <div className="flex justify-end pr-5 ml-5 timer mt-12 mb-2">
+        <Timer minutes={minutes} seconds={seconds} />
+      </div>
+    )}
+     </div>
+     </>
   );
 }

@@ -16,6 +16,11 @@ module.exports = {
       lightGrey: "#F2F3F9",
       lighterGrey: "rgba(242, 243, 249, 0.5)",
       timerBtn: "#FDCA7B",
+      Gold: "#FFD700",
+      silver: "#C0C0C0",
+      Bronze: "#CD7F32",
+      GGWP: "#50BFA8"
+
     },
     extends: {
       keyframes: {

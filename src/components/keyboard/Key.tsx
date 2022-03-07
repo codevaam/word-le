@@ -26,7 +26,7 @@ export const Key = ({
     "flex items-center justify-center rounded-lg mx-0.5 text-xs font-bold cursor-pointer select-none dark:text-white",
     {
       "transition ease-in-out": isRevealing,
-      "border-slate bg-lightGrey active:bg-slate": !status,
+      "border-slate text-blueberry bg-lightGrey active:bg-slate": !status,
       "bg-lightGrey text-blueberry opacity-25": status === "absent",
       "bg-blueberryLight active:bg-cyan-700 text-white": status === "present",
       "bg-green active:bg-green-700 text-white": status === "correct",

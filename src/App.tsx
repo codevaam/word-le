@@ -38,6 +38,7 @@ import LoginPage from './components/login'
 import Score from './components/score'
 import { getWord } from './api_call/word'
 import { endGame } from './api_call/endGame'
+import { idText } from 'typescript'
 interface ISol{
   
     "isSuccess": boolean,
@@ -84,7 +85,31 @@ function App() {
 
   const [stats, setStats] = useState(() => loadStats())
 
-  
+  const {initialMinute = 0,initialSeconds = 0} = {initialMinute: 5, initialSeconds: 0};
+    const [ minutes, setMinutes ] = useState(initialMinute);
+    const [seconds, setSeconds ] =  useState(initialSeconds);
+    useEffect(()=>{
+      if(isGameWon || isGameLost){
+        return;
+      }
+    let myInterval = setInterval(() => {
+            if (seconds > 0) {
+                setSeconds(seconds - 1);
+            }
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    clearInterval(myInterval)
+                } else {
+                    setMinutes(minutes - 1);
+                    setSeconds(59);
+                }
+            } 
+        }, 1000)
+        return ()=> {
+            clearInterval(myInterval);
+          };
+    });
+
 
   useEffect(() => {
     // if no game state on load,
@@ -201,16 +226,28 @@ function App() {
       }
     }
   }
-  if(guest) {
+  const [toggleLogin, setToggleLogin] = useState(false);
+  if(isGameWon && !isRevealing) {
     return (
       <>
         <Navbar
           setIsInfoModalOpen={setIsInfoModalOpen}
           setIsStatsModalOpen={setIsStatsModalOpen}
           showTimer={false}
+          minutes = {minutes}
+          seconds = {seconds}
         />
-        <Score />
+        <div className='mt-16'>
+          
+        <Score minutes={minutes}
+          seconds = {seconds}
+          tries = {guesses.length}
+          setToggleLogin={setToggleLogin}/>
+
+        </div>
+        {toggleLogin && 
         <LoginPage loginUser={() => setGuest(false)} />
+  }
       </>
     )
   }
@@ -220,6 +257,8 @@ function App() {
         setIsInfoModalOpen={setIsInfoModalOpen}
         setIsStatsModalOpen={setIsStatsModalOpen}
         showTimer={true}
+        minutes={minutes}
+        seconds={seconds}
       />
       <div className="pt-2 px-1 pb-8 md:max-w-7xl w-full mx-auto sm:px-6 lg:px-8 flex flex-col grow">
         <div className="pb-6 grow">
