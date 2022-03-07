@@ -1,15 +1,18 @@
 export const getWord = async () => {
-    const res = await fetch('https://word-le-backend.herokuapp.com/word',{
+    let res = await fetch('https://word-le-backend.herokuapp.com/word',{
         method: "GET",
         headers: {
-            'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin": '*',
-            "Accept": "application/json"
-        },
-        mode: "no-cors",
-        credentials: 'same-origin', 
+                        'Content-Type': 'application/json',
+                        "Access-Control-Allow-Origin": '*',
+                        "Accept": "*/*"
+                    },
+       
     })
+    res = await res.json();
 
-    console.log(res.json());
-    return res.json();
+    console.log("Hii");
+    console.log(res);
+    console.log("done");
 }
+
+
