@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     colors: {
       blueberry: "#5C2D90",
-      blueberryLight: "rgba(65, 30, 118, 0.72)",
+      blueberryLight: "rgba(65, 30, 118, 0.4)",
       blueberryLight2: "#E8723D",
       white: "#fff",
       black: "#000",
